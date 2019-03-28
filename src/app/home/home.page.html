@@ -1,14 +1,24 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-header no-border>
+    <ion-toolbar>
+        <ion-buttons slot="start">   
+          </ion-buttons>
+      <ion-title text-capitalize>Chapín Jobs</ion-title>
+    </ion-toolbar>
+  </ion-header>
 
 <ion-content>
-  <div class="ion-padding">
-    The world is your oyster.
-    <p>If you get lost, the <a target="_blank" rel="noopener" href="https://ionicframework.com/docs/">docs</a> will be your guide.</p>
-  </div>
+    <ion-list>
+        <ion-item>
+          <ion-label position="floating">Email: </ion-label>
+          <ion-input type="email" name="email" pattern="^([a-zA-z0-9_\-\.]+)@([a-zA-Z0-0_\-\.]+)\.([a-zA-Z]{2,5})$" required [(ngModel)]="usuario.email"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label position="floating">Contraseña: </ion-label>
+            <ion-input type="password" name="pass" required [(ngModel)]="usuario.pass"></ion-input>
+          </ion-item>
+        </ion-list>
+        <div>
+        <ion-button  expand="full" ion-button color="light" routerLink="/registro">Registrarse</ion-button>
+        <ion-button  expand="full" routerLink="/inicio" >Iniciar Sesión</ion-button>
+        </div>
 </ion-content>
