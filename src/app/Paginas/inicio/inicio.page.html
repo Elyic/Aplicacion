@@ -1,15 +1,33 @@
 <ion-header no-border>
     <ion-toolbar>
         <ion-buttons slot="start">
-  
-            <ion-back-button defaultHref="/">
-            </ion-back-button>
-      
+          <ion-menu-button></ion-menu-button>
           </ion-buttons>
       <ion-title text-capitalize>Chapin Jobs</ion-title>
     </ion-toolbar>
   </ion-header>
-
+ <form action="POST">
+  <ion-list>
+      <ion-item>
+        <ion-label>Categorias</ion-label>
+        <ion-select placeholder="Escoja uno">
+          <ion-select-option value="Tuto">Tutores</ion-select-option>
+          <ion-select-option value="Limp">Limpieza</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-button expand="full" type="submit" [disabled]="formulario.invalid">Buscar </ion-button>
+    </ion-list>
+  </form>
 <ion-content>
 
 </ion-content>
+<ion-footer>
+    <ion-toolbar>
+      <ion-title>Ofrece tu servicio</ion-title>
+    </ion-toolbar>
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+        <ion-fab-button  routerLink="/servicio">
+          <ion-icon name="add"></ion-icon>
+        </ion-fab-button>
+      </ion-fab>
+  </ion-footer>

@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+          <ion-menu-button></ion-menu-button>
+          </ion-buttons>
+    <ion-title>Ingresar servicio</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+    <form #formulario="ngForm" (ngSubmit)="onSubmitTemplate()" METHOD="POST">
+        <ion-list>
+          <ion-item>
+            <ion-label position="floating">Nombre: </ion-label>
+            <ion-input type="text" name="nombre" required [(ngModel)]=""></ion-input>
+          </ion-item>
+          <ion-item>
+              <ion-label position="floating">Categoria: </ion-label>
+              <ion-input type="text" name="categoria" required [(ngModel)]=""></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label position="floating">Descripcion: </ion-label>
+                <ion-input type="text" name="descripcion" required [(ngModel)]=""></ion-input>
+              </ion-item>
+                    <ion-item>
+                        <ion-label position="floating">Precio: </ion-label>
+                        <ion-input type="text" name="precio" required [(ngModel)]="" ></ion-input>
+                      </ion-item>
+            <ion-label position="floating">Direccion: </ion-label>
+            <ion-input type="text" name="direccion" required [(ngModel)]=""> </ion-input>
+          </ion-item>
+          <ion-item>
+        <ion-button expand="full" type="submit" [disabled]="formulario.invalid" routerLink="/inicio">Publicar </ion-button>
+        </form>
+
+</ion-content>
