@@ -12,5 +12,6 @@ export class HomePage {
     user: '',
     pass: '',
   };
-
+  onSubmitTemplate() {
+    }
 }
