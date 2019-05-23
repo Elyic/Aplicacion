@@ -20,7 +20,7 @@
         </ion-list>
         <div>
         <ion-button  expand="full" ion-button color="light" routerLink="/registro">Registrarse</ion-button>
-        <ion-button  expand="full" routerLink="/inicio" >Iniciar Sesión</ion-button>
+        <ion-button  expand="full" type="submit" [disabled]="formulario.invalid" routerLink="/" >Iniciar Sesión</ion-button>
         </div>
         </form>
 </ion-content>
