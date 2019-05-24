@@ -3,6 +3,7 @@ import { PersonaService } from 'src/app/Service/persona.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CategoriaService } from '../../Service/categoria.service';
 import { TrabajoService } from 'src/app/Service/trabajo.service';
+import { MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-inicio',
@@ -27,8 +28,11 @@ export class InicioPage implements OnInit {
      private activeRoute: ActivatedRoute,
      private categoria: CategoriaService,
      private trabajo: TrabajoService,
-     private router: Router) { }
-
+     private router: Router,
+     public menuCtrl: MenuController) { }
+     ionViewWillEnter() {
+      this.menuCtrl.enable(true);
+     }
   ngOnInit() {
     this.persona.Obtener().then((idObtener) => {console.log(idObtener );
       this.usuario.id_usuario = idObtener;

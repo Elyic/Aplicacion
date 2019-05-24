@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { PersonaService } from 'src/app/Service/persona.service';
-import { AlertController, NavController } from '@ionic/angular';
+import { AlertController, NavController, MenuController } from '@ionic/angular';
 import { Router } from '@angular/router';
 @Component({
   selector: 'app-home',
@@ -14,7 +14,10 @@ export class HomePage {
   };
   personaData: any;
   constructor(private persona: PersonaService, public alertController: AlertController, private router: Router,
-    private persona2: PersonaService, private navCtrl: NavController) { }
+    private persona2: PersonaService, private navCtrl: NavController, public menuCtrl: MenuController) { }
+    ionViewWillEnter() {
+      this.menuCtrl.enable(false);
+     }
   onSubmitTemplate() {
       this.persona.setLOGIN(this.usuario.email, this.usuario.pass)
                  .subscribe(

@@ -10,8 +10,7 @@ const routes: Routes = [
   { path: 'servicio', loadChildren: './servicio/servicio.module#ServicioPageModule' },
   { path: 'detalle/:id', loadChildren: './Paginas/detalle/detalle.module#DetallePageModule' },
   { path: 'busqueda/:id', loadChildren: './Paginas/busqueda/busqueda.module#BusquedaPageModule' },
-
-
+  { path: 'prueba', loadChildren: './Paginas/prueba/prueba.module#PruebaPageModule' },
 
 ];
 

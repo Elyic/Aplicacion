@@ -5,14 +5,14 @@ import { Storage } from '@ionic/storage';
   providedIn: 'root'
 })
 export class PersonaService {
-  url = 'http://localhost:3000';
+  url = 'http://192.168.1.8:3000';
   uri = '/REGISTRO';
   login = '/LOGIN';
   validar = '/VALIDAR';
   ID = '/ID';
   constructor(private http: HttpClient, private storage: Storage) { }
   setREGISTRO(nombr: string, ape: string, estad: string, gen: string, dir: string,
-    tel: string, ema: string, pas: string, fech: string) {
+    tel: string, ema: string, pas: string, id_m: string, fech: string) {
     return this.http.get(`${this.url}${this.uri}`,
     { params:  {
       nombre : nombr,
@@ -23,6 +23,7 @@ export class PersonaService {
       telefono: tel,
       email: ema,
       pass: pas,
+      id_muni: id_m,
       fecha: fech
     } }
     );

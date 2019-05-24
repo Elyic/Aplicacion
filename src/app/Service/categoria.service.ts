@@ -5,7 +5,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
   providedIn: 'root'
 })
 export class CategoriaService {
-  url = 'http://localhost:3000';
+  url = 'http://192.168.1.8:3000';
   uri = '/CONSULTA';
   constructor(private http: HttpClient) { }
   setCONSULTA() {

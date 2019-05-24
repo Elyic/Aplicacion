@@ -42,6 +42,24 @@
                         <ion-label position="floating">Telefono: </ion-label>
                         <ion-input type="text" name="tel" required [(ngModel)]="usuario.telefono" ></ion-input>
                       </ion-item>
+                      <ion-item>
+                        <ion-label>Pais</ion-label>
+                        <ion-select [(ngModel)]="usuario.id_pais" required (ionChange)="CambioPais($event)" name="PAIS" placeholder="Escoja uno">
+                          <ion-select-option *ngFor="let item of arryPais"  value="{{item.ID_PAIS}}">{{item.NOMBRE_PAIS}}</ion-select-option>
+                        </ion-select>
+                </ion-item>
+                <ion-item>
+                    <ion-label>Departamento</ion-label>
+                    <ion-select [disabled]="!usuario.id_pais" required [(ngModel)]="usuario.id_depto" (ionChange)="CambioDepto($event)" name="DEPTO" placeholder="Escoja uno">
+                      <ion-select-option *ngFor="let item of ArrayDepto"  value="{{item.ID_DEPTO}}">{{item.NOMBRE_DEPTO}}</ion-select-option>
+                    </ion-select>
+            </ion-item>
+            <ion-item>
+                <ion-label>Municipio</ion-label>
+                <ion-select [disabled]="!usuario.id_depto" required [(ngModel)]="usuario.id_muni" name="MUNI" placeholder="Escoja uno">
+                  <ion-select-option *ngFor="let item of ArrayMuni"  value="{{item.ID_MUNI}}">{{item.NOMBRE_MUNI}}</ion-select-option>
+                </ion-select>
+        </ion-item>
           <ion-item>
             <ion-label position="floating">Email: </ion-label>
             <ion-input type="email" name="email" pattern="^([a-zA-z0-9_\-\.]+)@([a-zA-Z0-0_\-\.]+)\.([a-zA-Z]{2,5})$" required [(ngModel)]="usuario.email"></ion-input>

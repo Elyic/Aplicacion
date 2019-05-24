@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastController, AlertController } from '@ionic/angular';
 import { PersonaService } from 'src/app/Service/persona.service';
+import { UbicacionService } from 'src/app/Service/ubicacion.service';
 @Component({
   selector: 'app-registro',
   templateUrl: './registro.page.html',
@@ -18,11 +19,22 @@ export class RegistroPage implements OnInit {
     email: '',
     pass: '',
     pass2: '',
+    id_muni: '',
+    id_pais: '',
+    id_depto: '',
   };
   personaData: any;
-  constructor(private persona: PersonaService, private persona2: PersonaService, public alertController: AlertController) { }
+  arryPais: any;
+  ArrayDepto: any;
+  ArrayMuni: any;
+  constructor(private persona: PersonaService, private persona2: PersonaService, public alertController: AlertController,
+    private ubicacion: UbicacionService) { }
 
   ngOnInit() {
+    this.ubicacion.setCONSULTAPAIS().subscribe(
+      (data: any ) => {
+          this.arryPais = data.recordset;
+      });
   }
   onSubmitTemplate() {
     this.persona2.setVALIDAR(this.usuario.email)
@@ -36,7 +48,7 @@ export class RegistroPage implements OnInit {
                       if (this.usuario.pass === this.usuario.pass2) {
                         this.persona.setREGISTRO(this.usuario.nombre, this.usuario.apellido, this.usuario.civil,
                         this.usuario.genero, this.usuario.dire, this.usuario.telefono, this.usuario.email, this.usuario.pass,
-                        this.usuario.nacimiento)
+                        this.usuario.id_muni, this.usuario.nacimiento)
                                    .subscribe(
                                      (data2: any) => {
                                       this.personaData = this.usuario;
@@ -71,6 +83,18 @@ export class RegistroPage implements OnInit {
         buttons: ['OK']
       });
       await alert.present();
+    }
+    CambioPais(event: any) {
+      this.ubicacion.setCONSULTADEPTO(this.usuario.id_pais).subscribe(
+        (data: any ) => {
+            this.ArrayDepto = data.recordset;
+        });
+    }
+    CambioDepto(event: any) {
+      this.ubicacion.setCONSULTAMUNI(this.usuario.id_depto).subscribe(
+        (data: any ) => {
+            this.ArrayMuni = data.recordset;
+        });
     }
   }
 
