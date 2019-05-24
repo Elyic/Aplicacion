@@ -26,7 +26,8 @@ export class HomePage {
                  .subscribe(
                    (data2: any) => {
                     console.log(data2.recordset[0].ID_USUARIO );
-                    this.router.navigate(['/inicio', data2.recordset[0].ID_USUARIO]);
+                    this.persona.Guardar(data2.recordset[0].ID_USUARIO);
+                    this.router.navigate(['/inicio']);
                    },
                   (err: any) => {
                         console.log(err);

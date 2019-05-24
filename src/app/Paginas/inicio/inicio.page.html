@@ -6,20 +6,26 @@
       <ion-title text-capitalize>Chapin Jobs</ion-title>
     </ion-toolbar>
   </ion-header>
- <form action="POST">
+ <form #formulario="ngForm" (ngSubmit)="onSubmit()" action="POST">
   <ion-list>
       <ion-item>
         <ion-label>Categorias</ion-label>
-        <ion-select placeholder="Escoja uno">
-          <ion-select-option value="Tuto">Tutores</ion-select-option>
-          <ion-select-option value="Limp">Limpieza</ion-select-option>
+        <ion-select [(ngModel)]="usuario.id_categoria" name="CATEGORIA" placeholder="Escoja uno">
+          <ion-select-option *ngFor="let item of arryObj"  value="{{item.ID_CATEGORIA}}">{{item.NOMBRE_CATEGORIA}}</ion-select-option>
         </ion-select>
       </ion-item>
       <ion-button expand="full" type="submit" [disabled]="">Buscar </ion-button>
     </ion-list>
   </form>
-<ion-content>
-
+<ion-content >
+    <ion-list  >
+      <div *ngFor="let item of arryTrabajo"  > 
+          <h2  [routerLink]="['/path']"> >Titulo: {{item.OCUPACION}}</h2>
+          <h3 >Salario: {{item.SALARIO}}</h3>
+          <p>Departamento: {{item.NOMBRE_DEPTO}}</p>
+          <ion-item-divider></ion-item-divider>
+      </div>   
+      </ion-list>
 </ion-content>
 <ion-footer>
     <ion-toolbar>

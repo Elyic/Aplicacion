@@ -12,26 +12,43 @@
     <form #formulario="ngForm" (ngSubmit)="onSubmitTemplate()" METHOD="POST">
         <ion-list>
           <ion-item>
-            <ion-label position="floating">Nombre: </ion-label>
-            <ion-input type="text" name="nombre" required [(ngModel)]=""></ion-input>
+            <ion-label position="floating">Titulo: </ion-label>
+            <ion-input type="text" required name="ocupacion" [(ngModel)]="trabajo.ocupacion" ></ion-input>
           </ion-item>
+          
           <ion-item>
-              <ion-label position="floating">Categoria: </ion-label>
-              <ion-input type="text" name="categoria" required [(ngModel)]=""></ion-input>
+              <ion-label position="floating">Descripcion: </ion-label>
+              <ion-input type="text" required name="descripcion" [(ngModel)]="trabajo.descripcion" ></ion-input>
             </ion-item>
             <ion-item>
-                <ion-label position="floating">Descripcion: </ion-label>
-                <ion-input type="text" name="descripcion" required [(ngModel)]=""></ion-input>
+                <ion-label>Categorias</ion-label>
+                <ion-select [(ngModel)]="trabajo.id_categoria" required name="CATEGORIA" placeholder="Escoja uno">
+                  <ion-select-option *ngFor="let item of arryObj"  value="{{item.ID_CATEGORIA}}">{{item.NOMBRE_CATEGORIA}}</ion-select-option>
+                </ion-select>
               </ion-item>
                     <ion-item>
                         <ion-label position="floating">Precio: </ion-label>
-                        <ion-input type="text" name="precio" required [(ngModel)]="" ></ion-input>
+                        <ion-input type="text" required name="precio" [(ngModel)]="trabajo.salario" ></ion-input>
                       </ion-item>
-            <ion-label position="floating">Direccion: </ion-label>
-            <ion-input type="text" name="direccion" required [(ngModel)]=""> </ion-input>
+              <ion-item>
+                  <ion-label>Pais</ion-label>
+                  <ion-select [(ngModel)]="trabajo.id_pais" required (ionChange)="CambioPais($event)" name="PAIS" placeholder="Escoja uno">
+                    <ion-select-option *ngFor="let item of arryPais"  value="{{item.ID_PAIS}}">{{item.NOMBRE_PAIS}}</ion-select-option>
+                  </ion-select>
           </ion-item>
           <ion-item>
-        <ion-button expand="full" type="submit" [disabled]="formulario.invalid" routerLink="/inicio">Publicar </ion-button>
-        </form>
-
+              <ion-label>Departamento</ion-label>
+              <ion-select [disabled]="!trabajo.id_pais" required [(ngModel)]="trabajo.id_depto" (ionChange)="CambioDepto($event)" name="DEPTO" placeholder="Escoja uno">
+                <ion-select-option *ngFor="let item of ArrayDepto"  value="{{item.ID_DEPTO}}">{{item.NOMBRE_DEPTO}}</ion-select-option>
+              </ion-select>
+      </ion-item>
+      <ion-item>
+          <ion-label>Municipio</ion-label>
+          <ion-select [disabled]="!trabajo.id_depto" required [(ngModel)]="trabajo.id_muni" name="MUNI" placeholder="Escoja uno">
+            <ion-select-option *ngFor="let item of ArrayMuni"  value="{{item.ID_MUNI}}">{{item.NOMBRE_MUNI}}</ion-select-option>
+          </ion-select>
+  </ion-item>
+</ion-list>
+        <ion-button expand="full" type="submit" [disabled]="formulario.invalid" >Publicar </ion-button>
+      </form>
 </ion-content>

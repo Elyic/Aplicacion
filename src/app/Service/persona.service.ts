@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
+import { Storage } from '@ionic/storage';
 @Injectable({
   providedIn: 'root'
 })
@@ -9,10 +10,10 @@ export class PersonaService {
   login = '/LOGIN';
   validar = '/VALIDAR';
   ID = '/ID';
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private storage: Storage) { }
   setREGISTRO(nombr: string, ape: string, estad: string, gen: string, dir: string,
     tel: string, ema: string, pas: string, fech: string) {
-    return this.http.get(`http://localhost:3000${this.uri}`,
+    return this.http.get(`${this.url}${this.uri}`,
     { params:  {
       nombre : nombr,
       apellido : ape,
@@ -27,7 +28,7 @@ export class PersonaService {
     );
     }
     setLOGIN(ema: string, pas: string) {
-      return this.http.get(`http://localhost:3000${this.login}`,
+      return this.http.get(`${this.url}${this.login}`,
       { params:  {
         email: ema,
         pass: pas,
@@ -35,18 +36,27 @@ export class PersonaService {
       );
       }
       setVALIDAR(ema: string) {
-        return this.http.get(`http://localhost:3000${this.validar}`,
+        return this.http.get(`${this.url}${this.validar}`,
         { params:  {
           email: ema,
         } }
         );
         }
         setID(ema: string) {
-          return this.http.get(`http://localhost:3000${this.ID}`,
+          return this.http.get(`${this.url}${this.ID}`,
           { params:  {
             email: ema,
           } }
           );
+          }
+          Guardar(ID: number) {
+            this.storage.set('ID_Persona', ID);
+          }
+          async Obtener() {
+           return this.storage.get('ID_Persona').then((val) => {
+             console.log('id en servicio', val);
+              return val;
+            });
           }
   }
 

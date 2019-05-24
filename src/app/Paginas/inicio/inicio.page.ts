@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { PersonaService } from 'src/app/Service/persona.service';
 import { ActivatedRoute } from '@angular/router';
+import { CategoriaService } from '../../Service/categoria.service';
+import { TrabajoService } from 'src/app/Service/trabajo.service';
 
 @Component({
   selector: 'app-inicio',
@@ -11,13 +13,35 @@ export class InicioPage implements OnInit {
   usuario = {
     email: '',
     pass: '',
+    id_categoria: '',
+    id_usuario: '',
+  };
+  trabajos = {
+    id_trabajo: '',
   };
   personaData: any;
   argumentos = null;
-  constructor(private persona: PersonaService, private activeRoute: ActivatedRoute) { }
+  arryObj: any;
+  arryTrabajo: any;
+  constructor(private persona: PersonaService,
+     private activeRoute: ActivatedRoute,
+     private categoria: CategoriaService,
+     private trabajo: TrabajoService) { }
 
   ngOnInit() {
-    this.argumentos = this.activeRoute.snapshot.paramMap.get('id');
+    this.persona.Obtener().then((idObtener) => {console.log(idObtener );
+      this.usuario.id_usuario = idObtener;
+    });
+    this.categoria.setCONSULTA().subscribe(
+      (data: any ) => {
+        this.arryObj = data.recordset;
+      });
+      this.trabajo.setCONSULTATRABAJOS().subscribe(
+        (data: any ) => {
+          this.arryTrabajo = data.recordset;
+        });
   }
-
+onSubmit() {
+  console.log(this.usuario.id_categoria);
+}
 }
