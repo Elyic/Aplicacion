@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { PersonaService } from 'src/app/Service/persona.service';
-import { AlertController } from '@ionic/angular';
+import { AlertController, NavController } from '@ionic/angular';
 import { Router } from '@angular/router';
 @Component({
   selector: 'app-home',
@@ -14,7 +14,7 @@ export class HomePage {
   };
   personaData: any;
   constructor(private persona: PersonaService, public alertController: AlertController, private router: Router,
-    private persona2: PersonaService) { }
+    private persona2: PersonaService, private navCtrl: NavController) { }
   onSubmitTemplate() {
       this.persona.setLOGIN(this.usuario.email, this.usuario.pass)
                  .subscribe(
@@ -25,7 +25,6 @@ export class HomePage {
                       this.persona2.setID(this.usuario.email)
                  .subscribe(
                    (data2: any) => {
-                    this.personaData = this.usuario;
                     console.log(data2.recordset[0].ID_USUARIO );
                     this.router.navigate(['/inicio', data2.recordset[0].ID_USUARIO]);
                    },
