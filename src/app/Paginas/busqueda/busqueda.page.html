@@ -18,9 +18,6 @@
     </ion-list>
   </form>
 <ion-content >
-    <ion-refresher slot="fixed" pullFactor="0.5" pullMin="100" pullMax="200" (ionRefresh)="Refresh($event)">
-        <ion-refresher-content></ion-refresher-content>
-      </ion-refresher>
     <ion-list  >
       <div *ngFor="let item of arryTrabajo"  > 
           <h2  [routerLink]="['/detalle', item.ID_TRABAJO]"> Titulo: {{item.OCUPACION}}</h2>

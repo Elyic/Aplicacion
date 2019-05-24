@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PersonaService } from 'src/app/Service/persona.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CategoriaService } from '../../Service/categoria.service';
 import { TrabajoService } from 'src/app/Service/trabajo.service';
 
@@ -26,7 +26,8 @@ export class InicioPage implements OnInit {
   constructor(private persona: PersonaService,
      private activeRoute: ActivatedRoute,
      private categoria: CategoriaService,
-     private trabajo: TrabajoService) { }
+     private trabajo: TrabajoService,
+     private router: Router) { }
 
   ngOnInit() {
     this.persona.Obtener().then((idObtener) => {console.log(idObtener );
@@ -43,5 +44,19 @@ export class InicioPage implements OnInit {
   }
 onSubmit() {
   console.log(this.usuario.id_categoria);
+  this.router.navigate(['/busqueda', this.usuario.id_categoria]);
+}
+Refresh(event: any) {
+  this.trabajo.setCONSULTATRABAJOS().subscribe(
+    (data: any ) => {
+      this.arryTrabajo = data.recordset;
+    });
+    this.categoria.setCONSULTA().subscribe(
+      (data: any ) => {
+        this.arryObj = data.recordset;
+      });
+  setTimeout(() => {
+    event.target.complete();
+  }, 1000);
 }
 }

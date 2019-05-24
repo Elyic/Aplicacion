@@ -1,0 +1,27 @@
+<ion-header no-border>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+          <ion-menu-button></ion-menu-button>
+          </ion-buttons>
+      <ion-title text-capitalize>Chapin Jobs</ion-title>
+    </ion-toolbar>
+  </ion-header>
+<ion-content>
+    <ion-list>
+        <div *ngFor="let item of arryTrabajo"  >
+            <h1>Datos de la oferta </h1>
+            <h3> Titulo: {{item.OCUPACION}}</h3>
+            <H3>Categoria: {{item.NOMBRE_CATEGORIA}}</H3>
+            <h3> Descripción: {{item.DESCRIPCION}}</h3>
+            <h3 >Salario: {{item.SALARIO}}</h3>
+            <H3>Pais: {{item.NOMBRE_PAIS}}</H3>
+            <h3>Departamento: {{item.NOMBRE_DEPTO}}</h3>
+            <h3>Municipio: {{item.NOMBRE_MUNI}}</h3>
+            <H1>Datos del Ofertante</H1>
+            <h3>Nombre: {{item.NOMBRE}}</h3>
+            <h3>Apellido: {{item.APELLIDO}}</h3>
+            <h3>Telefono: {{item.TELEFONO}}</h3>
+            <ion-item-divider></ion-item-divider>
+        </div>   
+        </ion-list>
+</ion-content>

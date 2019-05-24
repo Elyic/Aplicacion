@@ -8,6 +8,8 @@ export class TrabajoService {
   url = 'http://localhost:3000';
   uri = '/GUARDAR';
   mostrar = '/MOSTRAR';
+  detalle = '/DETALLE';
+  categoria = '/CATEGORIA';
   constructor(private http: HttpClient) { }
   setGUARDAR(ocu: string, desc: string, id_m: string, id_c: string, id_u: string, salar: string) {
     return this.http.get(`${this.url}${this.uri}`,
@@ -26,4 +28,22 @@ export class TrabajoService {
       { }
       );
       }
+      setDETALLETRABAJOS(id_trab: string) {
+        return this.http.get(`${this.url}${this.detalle}`,
+        {
+          params:  {
+            id_trabajo : id_trab,
+          }
+         }
+        );
+        }
+        setBUSQUEDACATEGORIA(id_cat: string) {
+          return this.http.get(`${this.url}${this.categoria}`,
+          {
+            params:  {
+              id_categoria : id_cat,
+            }
+           }
+          );
+          }
 }

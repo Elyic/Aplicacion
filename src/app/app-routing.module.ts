@@ -8,6 +8,10 @@ const routes: Routes = [
   { path: 'inicio', loadChildren: './Paginas/inicio/inicio.module#InicioPageModule' },
   { path: 'about', loadChildren: './about/about.module#AboutPageModule' },
   { path: 'servicio', loadChildren: './servicio/servicio.module#ServicioPageModule' },
+  { path: 'detalle/:id', loadChildren: './Paginas/detalle/detalle.module#DetallePageModule' },
+  { path: 'busqueda/:id', loadChildren: './Paginas/busqueda/busqueda.module#BusquedaPageModule' },
+
+
 
 ];
 
