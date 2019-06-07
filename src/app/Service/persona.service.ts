@@ -5,7 +5,7 @@ import { Storage } from '@ionic/storage';
   providedIn: 'root'
 })
 export class PersonaService {
-  url = 'http://192.168.1.8:3000';
+  url = 'http://18.221.124.45:3000';
   uri = '/REGISTRO';
   login = '/LOGIN';
   validar = '/VALIDAR';

@@ -5,7 +5,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
   providedIn: 'root'
 })
 export class TrabajoService {
-  url = 'http://192.168.1.8:3000';
+  url = 'http://18.221.124.45:3000';
   uri = '/GUARDAR';
   mostrar = '/MOSTRAR';
   detalle = '/DETALLE';
